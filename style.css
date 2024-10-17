@@ -7,6 +7,16 @@ body {
     background-image: url("images/background.jpg");
 }
 
+ h2 {
+    margin: -15px;
+    font-size: 60px;
+    font-weight: bold;
+    color: #f5f5f5;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(45deg, #ff8c00, #ff3e00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;        
+}
 
 canvas {
     background: linear-gradient(90deg, #4CAF50 25%, #388E3C 25%, #388E3C 50%, #4CAF50 50%, #4CAF50 75%, #388E3C 75%);
@@ -50,3 +60,4 @@ canvas {
         transform: scale(1);
     }
 }
+
