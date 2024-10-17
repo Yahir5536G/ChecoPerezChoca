@@ -5,10 +5,11 @@ body {
     flex-direction: column;
     height: 100vh;
     background-image: url("images/background.jpg");
+  margin: 50px;  
 }
 
  h2 {
-    margin: -15px;
+    margin: -20px;
     font-size: 60px;
     font-weight: bold;
     color: #f5f5f5;
@@ -61,3 +62,20 @@ canvas {
     }
 }
 
+.marcador {
+    color: white;
+    font-size: 25px;
+    margin: 1px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #f5f5f5;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(45deg, #98eef5, #98f5d0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    float: right;
+}
+.temporizador {
+    color: white;
+    font-size: 25px;
+}
