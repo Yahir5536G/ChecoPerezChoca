@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url("images/background.jpg");
+}
+
+
+canvas {
+    background: linear-gradient(90deg, #4CAF50 25%, #388E3C 25%, #388E3C 50%, #4CAF50 50%, #4CAF50 75%, #388E3C 75%);
+    background-size: 100px 100px;
+    border: 5px solid white;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+    display: block;
+    filter: drop-shadow(0 0 120px black);
+}
+
+#startBtn {
+    font-size: 20px;
+    border: none; 
+    color: white; 
+    padding: 14px 28px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    display: inline-block;
+    margin: 5px;
+    background-image: linear-gradient(to right, #dc3545, #e0666e);
+}
+
+
+#startBtn:hover {
+    background-image: linear-gradient(to right, #d32838, #e0666e);
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.8) 10%, rgba(255, 150, 0, 0.5) 50%, rgba(255, 255, 0, 0.9) 80%);
+    animation: flame 1s infinite;
+}
+
+
+
+@keyframes flame {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
