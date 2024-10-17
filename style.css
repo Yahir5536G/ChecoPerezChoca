@@ -1,0 +1,45 @@
+body {
+	background: url("background.jpg");
+}
+.etiqueta {
+	padding: 15px;
+	color: #fff;
+	background-color: #9eb7b8;
+	margin: 10px;
+	border-radius: 5px;
+	font-size: 20px;
+}
+.dato {
+	margin: 10px;
+	padding: 15px;
+	padding-right: 100px;
+	border-radius: 5px;
+	border: 0;
+	outline: none;
+	font-size: 15px;
+	filter: drop-shadow(16px 16px 20px black);
+}
+.button {
+	margin: 5px;
+	background-color: crimson;
+	padding-right: 100px;
+	padding: 13px;
+	left: 310px;
+	border-radius: 0 5px 5px 0;
+	filter: drop-shadow(16px 16px 20px black);
+	font-size: 20px;
+}
+.tabla {
+	color: black;
+	width: 100%; 
+  	table-layout: fixed;
+  	border-spacing: 10px;
+  	background-color: darkgray;
+  	border-radius: 10px;
+  	font-family: "Flexo-Medium", arial, sans-serif;
+}
+.title {
+	background-color: crimson;
+	color: #fff;
+	filter: drop-shadow(16px 5px 16px black);
+}
