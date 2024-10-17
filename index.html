@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulación de Carros en la Cancha</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost/ChechoPerezChoca/style.css">
 
 </head>
 <body>
     <h2>CarX-Ball</h2>
-    <div class="marcador" id="marcador">Marcador: Rojo 0 - 0 Azul</div> <!-- Marcador inicial -->
-     <div class="temporizador" id="temporizador">Tiempo restante: 30s</div> <!-- Temporizador inicial -->
+    <div class="marcador" id="marcador">Marcador: Rojo 0 - 0 Azul</div> 
+     <div class="temporizador" id="temporizador" >Tiempo restante: 30s</div> 
     <canvas id="juegoCanvas" width="800" height="500"></canvas>
     <button id="startBtn">Iniciar</button>
     <audio src="music.mp3" loop id="music"></audio>
 
     <script>
+        window.addEventListener("keydown", function(event) {
+    // Verificar si la tecla presionada es una de las flechas
+    if (event.key === "ArrowUp" || event.key === "ArrowDown" || event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault(); // Evitar la acción de desplazamiento predeterminada
+    }
+});
         const imagenCarro1 = new Image();
         imagenCarro1.src = 'images/rojo.png';
 
@@ -288,6 +294,7 @@
 
         function detenerJuego() {
             cancelAnimationFrame(animar); // Detener la animación
+
             if (goles1 > goles2) {
                 alert('¡Tiempo agotado! El carro rojo gana.');
             } else if (goles2 > goles1) {
@@ -295,6 +302,7 @@
             } else {
                 alert('¡Tiempo agotado! Es un empate.');
             }
+            location.reload();
 
         }
 
@@ -441,8 +449,9 @@
             var audio = document.getElementById("music");
             if (audio.paused) {
                 audio.play();
-
-            } 
+            } else {
+                location.reload();
+            }
             iniciarTemporizador();
         });
         
