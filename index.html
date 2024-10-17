@@ -8,7 +8,9 @@
 
 </head>
 <body>
-    <h2 style="text-align: center;">Simulación de Carros en la Cancha</h2>
+    <h2>CarX-Ball</h2>
+    <div class="marcador" id="marcador">Marcador: Rojo 0 - 0 Azul</div> <!-- Marcador inicial -->
+     <div class="temporizador" id="temporizador">Tiempo restante: 30s</div> <!-- Temporizador inicial -->
     <canvas id="juegoCanvas" width="800" height="500"></canvas>
     <button id="startBtn">Iniciar</button>
     <audio src="music.mp3" loop id="music"></audio>
@@ -23,6 +25,11 @@
         const canvas = document.getElementById('juegoCanvas');
         const ctx = canvas.getContext('2d');
 
+        const marcador = document.getElementById('marcador');
+        const temporizador = document.getElementById('temporizador');
+
+        let tiempoRestante = 30; // 30 segundos para el juego
+        let intervaloTemporizador;
         
         let carro1 = {
             x: 50, // Posición inicial dentro de la cancha
@@ -264,20 +271,64 @@
             
             pelota.x += Math.cos(angulo) * diferencia;
             pelota.y += Math.sin(angulo) * diferencia;
-}
+        }   
+
+
+        function iniciarTemporizador() {
+            intervaloTemporizador = setInterval(() => {
+                tiempoRestante--;
+                temporizador.textContent = `Tiempo restante: ${tiempoRestante}s`;
+
+                if (tiempoRestante === -1) {
+                    clearInterval(intervaloTemporizador);
+                    detenerJuego();
+                }
+            }, 1000);
+        }
+
+        function detenerJuego() {
+            cancelAnimationFrame(animar); // Detener la animación
+            if (goles1 > goles2) {
+                alert('¡Tiempo agotado! El carro rojo gana.');
+            } else if (goles2 > goles1) {
+                alert('¡Tiempo agotado! El carro azul gana.');
+            } else {
+                alert('¡Tiempo agotado! Es un empate.');
+            }
+
+        }
+
+        function actualizarMarcador() {
+            marcador.textContent = `Marcador: Rojo ${goles1} - ${goles2} Azul`;
+        }
 
         function verificarGol() {
-            // Gol del carro 1 (izquierda)
             if (pelota.x - pelota.radio <= 10 && (pelota.y >= canvas.height / 2 - 40 && pelota.y <= canvas.height / 2 + 40)) {
-                goles1++;
-                alert(`¡Gol! El carro rojo ha anotado. Goles: ${goles1} - ${goles2}`);
+                if (carro1.x < canvas.width / 2) { // Si el carro 1 está en su propia mitad
+                    goles2++; // Autogol del carro 1, gol para el carro 2
+                    
+                    actualizarMarcador(); // Actualizar marcador después del gol
+                } else {
+                    goles1++;
+                    
+                    actualizarMarcador(); // Actualizar marcador después del gol
+                }
                 resetPelota();
             }
 
+            
             // Gol del carro 2 (derecha)
+             // Autogol del carro 2 en su propia portería (derecha)
             if (pelota.x + pelota.radio >= canvas.width - 10 && (pelota.y >= canvas.height / 2 - 40 && pelota.y <= canvas.height / 2 + 40)) {
-                goles2++;
-                alert(`¡Gol! El carro azul ha anotado. Goles: ${goles1} - ${goles2}`);
+                if (carro2.x > canvas.width / 2) { // Si el carro 2 está en su propia mitad
+                    goles1++; // Autogol del carro 2, gol para el carro 1
+                    
+                    actualizarMarcador(); // Actualizar marcador después del gol
+                } else {
+                    goles2++;
+                    
+                    actualizarMarcador(); // Actualizar marcador después del gol
+                }
                 resetPelota();
             }
         }
@@ -392,6 +443,7 @@
                 audio.play();
 
             } 
+            iniciarTemporizador();
         });
         
     </script>
